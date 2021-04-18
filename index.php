@@ -8,6 +8,7 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
         <link rel="stylesheet" href="./css/style.css">
     </head>
     <body class="bg-body text-white">
@@ -39,6 +40,9 @@
                             <?php endwhile;?>
                         </div>
                     </li>
+                    <li class="nav-item add-menu">
+                        <a class="nav-link" href="./Project/create.php">Crea Progetto</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About</a>
                     </li>
@@ -49,7 +53,7 @@
     <!----------------------Project container section----------------------------->
 
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center col-12">
                 <?php 
                     $mysql = new mysqli('localhost', 'test', 'test', 'todo_db');
                     if($mysql->connect_error){
@@ -59,7 +63,7 @@
                     $result = $mysql->query($query);    
                     while($row=$result->fetch_assoc()):    
                 ?>
-                <div class="col-lg-3 m-3">
+                <div class="m-3">
                 <?php if($row['attivo']==true): ?>
                     <div class="card text-dark h-100" style="width: 18rem;">
                 <?php else: ?>
@@ -71,6 +75,8 @@
                             <img src="./img/cybersecurity.jpg" alt="Web" class="card-img-top">
                         <?php elseif($row['categoria']==3): ?>
                             <img src="./img/challenge.jpg" alt="Web" class="card-img-top">
+                        <?php elseif($row['categoria']==4): ?>
+                            <img src="./img/unict.png" alt="Web" class="card-img-top">
                         <?php endif; ?>
                         <div class="card-body">
                             <h3 class="card-title"><?php echo $row['nome']?></h3>
@@ -93,8 +99,8 @@
 
         <!----------------------Project add button section----------------------------->
 
-        <a href="./Project/create.php" class="btn btn-accent btn-action-lg btn-raised btn-pr">
-            <i class="material-icons">Nuovo</i>
+        <a href="./Project/create.php" class="btn btn-accent btn-action-lg btn-raised btn-pr bg-primary">
+            <i class="fas fa-2x fa-plus"></i>
         </a>
 
         <!-- Optional JavaScript -->

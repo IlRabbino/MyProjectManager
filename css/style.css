@@ -1,7 +1,3 @@
-/*.card{
-    margin: 10px;
-}*/
-
 .bg-active{
     background-color:#1abc9c;
 }
@@ -79,7 +75,6 @@
 .btn-accent:active,
 .btn-accent.active {
     color: #ffffff;
-    background-color: #E91E63;
 }
 
 .btn-raised {
@@ -89,10 +84,26 @@
 }
 
 .btn-action-lg {
-    width: 90px;
-    height: 80px;
-    line-height: 84px;
+    width: 70px;
+    height: 70px;
+    line-height: 80px;
     padding: 0;
-    border-radius: 5px 20px 5px;
+    border-radius: 50%;
     /*border-radius: 32px;*/
+}
+
+.add-menu{
+    display: none;
+}
+
+@media screen and (max-width: 992px) {
+    
+    .btn-pr{
+        display: none;
+    }
+
+    .add-menu{
+        display: inline-block;
+    }
+  
 }
