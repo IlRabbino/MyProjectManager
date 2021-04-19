@@ -1,3 +1,4 @@
+<?php include '../connect.php';?>
 <!doctype html>
     <html lang="en">
     <head>
@@ -9,20 +10,21 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/form_style.css">
     </head>
     <body class="bg-body text-white">
 
     <!----------------------Project navbar section----------------------------->
 
         <nav class="navbar navbar-expand-lg navbar-dark bg-black">
-            <a class="navbar-brand" href="#"><img src="../img/logo.png" alt="logo"></a>
+            <a class="navbar-brand" href="../index.php"><img src="../img/logo.png" alt="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../index.php">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -50,41 +52,53 @@
         </nav>
 
     <!----------------------Project creation form----------------------------->
-
-        <div class="container">
-            <div class="row justify-content-center">
-                <form>
+    <!--TODO: Aggiungere header-->                      
+    <div class="container contact">
+        <div class="row">
+            <div class="col-md-3 contact-bg">
+               <div class="contact-info">
+                    <!--<img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+                    <h2>Crea progetto</h2>
+                    <h4>Impegnati per assicurarti di portarlo a termine!</h4>-->
+                </div>
+            </div>
+            <div class="col-md-9">
+                <form class="contact-form" action="save.php" method="POST">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Email address</label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    <label class="control-label col-sm-2 text-dark" for="fname">Titolo:</label>
+                    <div class="col-sm-10">          
+                        <input type="text" class="form-control" id="fname" placeholder="Titolo del progetto" name="nome">
+                    </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        </select>
+                        <label class="control-label col-sm-2 text-dark" for="lname">Categoria:</label>
+                        <div class="col-sm-10">          
+                            <select class="form-control" id="sel1" name="categoria">
+                                <?php
+                                $query = "SELECT * FROM categorie";
+                                $result = $mysql->query($query);
+                                while($row = $result->fetch_assoc()):
+                                ?>
+                                <option><?php echo $row['nome'];?></option>
+                                <?php endwhile;?>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2">Example multiple select</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        </select>
+                    <label class="control-label col-sm-2 text-dark" for="comment">Descrizione:</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="5" id="comment" name="descrizione"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-outline-dark" name="save">Crea</button>
+                    </div>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
 
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

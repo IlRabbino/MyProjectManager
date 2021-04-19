@@ -1,3 +1,4 @@
+<?php include 'connect.php';?>
 <!doctype html>
     <html lang="en">
     <head>
@@ -31,7 +32,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <?php
-                                $mysql = new mysqli('localhost', 'test', 'test', 'todo_db');
+                                
                                 $query = "SELECT * FROM categorie";
                                 $result = $mysql->query($query);
                                 while($row = $result->fetch_assoc()): 
