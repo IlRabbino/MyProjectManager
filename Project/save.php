@@ -14,8 +14,8 @@ if(isset($_POST['save'])){
         $cat = $row['id'];
     }
 
-    $sql = "INSERT INTO progetti (nome, descrizione, attivo, categoria)
-            VALUES('$nome', '$descrizione', 1, '$cat')";
+    $sql = sprintf("INSERT INTO progetti (nome, descrizione, attivo, categoria)
+            VALUES('$nome', '%s', 1, '$cat')", $mysql->real_escape_string($descrizione));
 
     $mysql->query($sql) or die($mysql->error);
 
