@@ -83,7 +83,7 @@
                             <h3 class="card-title"><?php echo $row['nome']?></h3>
                             <p class="card-text"><?php echo $row['descrizione']?></p>
                             <?php if($row['attivo']==true): ?>
-                                <a href="#" class="btn btn-sm btn-outline-success">Apri</a>
+                                <a href="./Todo/project.php?project=<?php echo $row['id']?>" class="btn btn-sm btn-outline-success">Apri</a>
                                 <a href="./Project/edit.php?edit=<?php echo $row['id']?>" class="btn btn-sm btn-outline-warning">Modifica</a>
                                 <a href="./Project/delete.php?delete=<?php echo $row['id']?>" class="btn btn-sm btn-outline-danger">Elimina</a>
                             <?php else: ?>

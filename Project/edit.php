@@ -52,7 +52,7 @@
         </nav>
 
     <!----------------------Project creation form----------------------------->
-    <!--TODO: Aggiungere header-->                      
+    <!--TODO: Aggiungere header-->                   
     <div class="container contact">
         <div class="row">
             <div class="col-md-3 contact-bg">
@@ -71,7 +71,8 @@
             }
             ?>
             <div class="col-md-9">
-                <form class="contact-form" action="update.php?id=<?php $id?>" method="POST">
+                <form class="contact-form" action="update.php" method="POST">
+                    <input type="hidden" value="<?php echo $id ?>" name="id">
                     <div class="form-group">
                     <label class="control-label col-sm-2 text-dark" for="fname">Titolo:</label>
                     <div class="col-sm-10">          
