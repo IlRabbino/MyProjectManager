@@ -56,7 +56,6 @@
         <div class="container">
             <div class="row justify-content-center col-12">
                 <?php 
-                    $mysql = new mysqli('localhost', 'test', 'test', 'todo_db');
                     if($mysql->connect_error){
                         echo "failed to connect to mysql";
                     }
